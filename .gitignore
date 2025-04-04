@@ -22,3 +22,41 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+      <div className="infos">
+          <div className="info">
+            <img className="schedule" src={scheduleLogo} alt="" />
+            <div className="text first">
+              <span id="first">Date Of Birth</span>
+              <span id="main">August 23, 1996</span>
+            </div>
+          </div>
+          <div className="info">
+            <img src={genderIcon} alt="" />
+            <div className="text">
+              <span id="first">Gender</span>
+              <span id="main">Female</span>
+            </div>
+          </div>
+          <div className="info">
+            <img src={phone} alt="" />
+            <div className="text">
+              <span id="first">Contact Info.</span>
+              <span id="main">(415) 555-1234</span>
+            </div>
+          </div>
+          <div className="info">
+            <img src={phone} alt="" />
+            <div className="text">
+              <span id="first">Emergency Contacts</span>
+              <span id="main">(415) 555-5678</span>
+            </div>
+          </div>
+          <div className="info">
+            <img src={safe} alt="" />
+            <div className="text">
+              <span id="first">Insurance Provider</span>
+              <span id="main">Sunrise Health Assurance</span>
+            </div>
+          </div>
+        </div> 
