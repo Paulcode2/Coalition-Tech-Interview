@@ -11,11 +11,11 @@ const RightBar = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // API Credentials (Replace with actual values)
+
   const username = "coalition";
   const password = "skills-test";
 
-  // Function to fetch Jessica Taylor's details
+
   const fetchData = async () => {
     try {
       const response = await fetch(
@@ -24,7 +24,7 @@ const RightBar = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Basic " + btoa(`${username}:${password}`), // Encode credentials
+            Authorization: "Basic " + btoa(`${username}:${password}`), 
           },
         }
       );

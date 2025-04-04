@@ -54,9 +54,6 @@ const Data = () => {
   if (loading) return <p>Loading data...</p>;
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
-  // Get the first 6 diagnosis history items
-  const limitedDiagnosisHistory = patientData?.diagnosis_history?.slice(0, 6) || [];
-
   return (
     <div className="data">
       <div className="top">
@@ -68,46 +65,44 @@ const Data = () => {
           <div className="graph">
             <BloodLevelChart />
           </div>
-          <div className="center">
-            {patientData && (
-              <>
-                <div className="respiratory-rate">
-                  <img src={respi} alt="Respiratory Rate" />
-                  <div className="texts">
-                    <span id="head">Respiratory Rate</span>
-                    <span id="main">
-                      {patientData.respiratory_rate || "Data Not Available"}
-                    </span>
+          <div className="">
+            <div className="center">
+              {patientData && (
+                <>
+                  <div className="repiratory rate">
+                    <img src={respi} alt="Respiratory Rate" />
+                    <div className="texts">
+                      <span id="head">Respiratory Rate</span>
+                      <span id="main">
+                        {patientData.respiratory_rate || ` N/A`}
+                      </span>
+                    </div>
+                    <span id="det">Normal</span>
                   </div>
-                  <span id="det">Normal</span>
-                </div>
 
-                <div className="temperature">
-                  <img src={temp} alt="Temperature" />
-                  <div className="texts">
-                    <span id="head">Temperature</span>
-                    <span id="main">
-                      {patientData.temperature || "Data Not Available"}
-                    </span>
+                  <div className="repiratory temp">
+                    <img src={temp} alt="Temperature" />
+                    <div className="texts">
+                      <span id="head">Temperature</span>
+                      <span id="main">{patientData.temperature || ` N/A`}</span>
+                    </div>
+                    <span id="det">Normal</span>
                   </div>
-                  <span id="det">Normal</span>
-                </div>
 
-                <div className="heart-rate">
-                  <img src={heart} alt="Heart Rate" />
-                  <div className="texts">
-                    <span id="head">Heart Rate</span>
-                    <span id="main">
-                      {patientData.heart_rate || "Data Not Available"}
-                    </span>
+                  <div className="repiratory temp heart">
+                    <img src={heart} alt="Heart Rate" />
+                    <div className="texts">
+                      <span id="head">Heart Rate</span>
+                      <span id="main">{patientData.heart_rate || ` N/A`}</span>
+                    </div>
+                    <div className="icon">
+                      <img src={downArrow} alt="Arrow" />
+                      <span id="det">Lower than Average</span>
+                    </div>
                   </div>
-                  <div className="icon">
-                    <img src={downArrow} alt="Arrow" />
-                    <span id="det">Lower than Average</span>
-                  </div>
-                </div>
-              </>
-            )}
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -119,24 +114,28 @@ const Data = () => {
         <table>
           <thead>
             <tr>
-              <th>Diagnosis</th>
+              <th>Diagnosis History</th>
               <th>Description</th>
               <th>Status</th>
             </tr>
           </thead>
           <tbody>
-            {limitedDiagnosisHistory.length > 0 ? (
-              limitedDiagnosisHistory.map((diagnosis, index) => (
-                <tr key={index}>
-                  <td>{diagnosis.name || "N/A"}</td>
-                  <td>{diagnosis.description || "No description"}</td>
-                  <td>{diagnosis.status || "Unknown"}</td>
-                </tr>
-              ))
+            {patientData?.diagnosis_history?.length > 0 ? (
+              patientData.diagnosis_history
+                .slice(0, 8)
+                .map((diagnosis, index) => (
+                  <tr key={index}>
+                    <td>{diagnosis.name || "N/A"}</td>
+                    <td>
+                      {diagnosis.description || "No description available"}
+                    </td>
+                    <td>{diagnosis.status || "Unknown"}</td>
+                  </tr>
+                ))
             ) : (
               <tr>
                 <td colSpan="3" style={{ textAlign: "center" }}>
-                  No diagnosis history available
+                  No diagnosis history available.
                 </td>
               </tr>
             )}

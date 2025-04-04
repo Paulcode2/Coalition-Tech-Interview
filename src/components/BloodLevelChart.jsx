@@ -14,7 +14,7 @@ import {
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import "chartjs-adapter-date-fns";
 
-// Register Chart.js components
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -62,8 +62,8 @@ const BloodLevelChart = () => {
             "2024-02-01",
             "2024-03-01",
           ];
-          const systolicData = [120, 130, 160, 110, 140, 160]; // Dummy data for Systolic
-          const diastolicData = [100, 80, 90, 85, 75, 78]; // Dummy data for Diastolic
+          const systolicData = [120, 130, 160, 110, 140, 160];
+          const diastolicData = [100, 80, 90, 85, 75, 78]; 
 
           setChartData({
             labels: dates,
@@ -71,7 +71,7 @@ const BloodLevelChart = () => {
               {
                 label: "Systolic",
                 data: systolicData,
-                borderColor: "#D63384", // Pink
+                borderColor: "#D63384", 
                 backgroundColor: "rgba(214, 51, 132, 0.2)",
                 pointBackgroundColor: "#D63384",
                 pointRadius: 6,
@@ -81,7 +81,7 @@ const BloodLevelChart = () => {
               {
                 label: "Diastolic",
                 data: diastolicData,
-                borderColor: "#5C62EC", // Blue
+                borderColor: "#5C62EC", 
                 backgroundColor: "rgba(92, 98, 236, 0.2)",
                 pointBackgroundColor: "#5C62EC",
                 pointRadius: 6,
